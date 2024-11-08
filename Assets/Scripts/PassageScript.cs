@@ -25,7 +25,9 @@ public class PassageScript : MonoBehaviour
         Destroy(bola);
         Destroy(player);
         Destroy(cenario);
-        Destroy(canvas);
+        DontDestroyOnLoad(canvas);
+        canvas.SetActive(false);
+        //Destroy(canvas);
         Destroy(gameObject);
     }
 }

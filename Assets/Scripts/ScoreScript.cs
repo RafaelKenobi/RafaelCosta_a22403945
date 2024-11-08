@@ -4,6 +4,7 @@ using UnityEngine;
 public class ScoreScript : MonoBehaviour
 {
     [SerializeField] GameObject text;
+    [SerializeField] GameObject highScoreText;
     [SerializeField] GameObject timerTag;
     [SerializeField] GameObject powerup;
     PassageScript passage;
@@ -12,6 +13,7 @@ public class ScoreScript : MonoBehaviour
     public float tempo = 30f;
     public float tempo2 = 30f;
     public float tempopower = 10f;
+    public int highScore;
 
     private void Start()
     {
@@ -19,6 +21,8 @@ public class ScoreScript : MonoBehaviour
         score = 0;
         text.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score;
         passage = GameObject.Find("passage").GetComponent<PassageScript>();
+        highScore = PlayerPrefs.GetInt("highscore", 0);
+        highScoreText.text = (PlayerPrefs.GetInt("highscore"), 0).ToString();
     }
 
     public void incrementScore()
@@ -72,5 +76,6 @@ public class ScoreScript : MonoBehaviour
     {
         passage.mudaCena2();
         SceneManager.LoadScene("EndScene");
+
     }
 }

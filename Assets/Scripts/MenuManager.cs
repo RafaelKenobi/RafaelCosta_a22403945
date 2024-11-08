@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+
+    [SerializeField] GameObject highScoreText;
+
+    private void Start()
+    {
+        highScoreText.text = (PlayerPrefs.GetInt("highscore"), 0).ToString();
+    }
     public void ExitGame()
     {
         Application.Quit();
@@ -15,5 +22,6 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("GameScene");
         Time.timeScale = 1f;
     }
+
 
 }
