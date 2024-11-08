@@ -21,4 +21,9 @@ public class PlayerScript : MonoBehaviour
 
         player.velocity = movimento * velocidade;
     }
-} 
+}
+
+//animator.SetTrigger("Dano");
+//animator.SetFloat("MoveX", lookDirection.x);
+//animator.SetFloat("Speed", move.magnitude);
+//animator = GetComponent<Animator>();
