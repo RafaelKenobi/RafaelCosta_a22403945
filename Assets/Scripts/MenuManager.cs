@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1f;
     }
 
 }

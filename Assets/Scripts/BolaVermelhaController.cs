@@ -49,4 +49,27 @@ public class BolaVermelhaController : MonoBehaviour
         direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         redBall.velocity = direction * velocidade;
     }
+
+
+
+    void OnEnable()
+    {
+        PowerUp.power_up += resize;
+    }
+
+    void OnDisable() 
+    {
+        PowerUp.power_up -= resize;
+    }
+
+    private void resize()
+    {
+        transform.localScale = new Vector3(0.09921315f , 0.09921315f , 0.09921315f);
+        Invoke("repor", 5f);
+    }
+
+    private void repor()
+    {
+        transform.localScale = new Vector3(0.1984263f, 0.1984263f, 0.1984263f);
+    }
 }
