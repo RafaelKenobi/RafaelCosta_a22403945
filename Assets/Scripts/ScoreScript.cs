@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ public class ScoreScript : MonoBehaviour
 
     public int score = 0;
     public float tempo = 30f;
+    public float tempo2 = 30f;
 
     private void Start()
     {
@@ -35,11 +37,26 @@ public class ScoreScript : MonoBehaviour
         if (tempo <= 0) 
         {
             mudarcena();
+            tempo = 30f;
+
         }
     }
     public void mudarcena()
     {
-        SceneManager.LoadScene("GameScene2");
         passage.mudaCena1();
+        SceneManager.LoadScene("GameScene2");
+        tempo2 -= Time.deltaTime;
+        if (tempo2 <= 0)
+        {
+            mudarcena2();
+        }
+
+    }
+    public void mudarcena2()
+    {
+
+        passage.mudaCena2();
+        SceneManager.LoadScene("EndScene");
+
     }
 }
