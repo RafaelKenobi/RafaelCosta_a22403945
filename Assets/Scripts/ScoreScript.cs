@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ScoreScript : MonoBehaviour
 {
+    public static ScoreScript Instance;
     [SerializeField] GameObject text;
-    [SerializeField] GameObject highScoreText;
     [SerializeField] GameObject timerTag;
     [SerializeField] GameObject powerup;
     PassageScript passage;
@@ -22,7 +22,6 @@ public class ScoreScript : MonoBehaviour
         text.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score;
         passage = GameObject.Find("passage").GetComponent<PassageScript>();
         highScore = PlayerPrefs.GetInt("highscore", 0);
-        highScoreText.text = (PlayerPrefs.GetInt("highscore"), 0).ToString();
     }
 
     public void incrementScore()
@@ -31,6 +30,10 @@ public class ScoreScript : MonoBehaviour
         text.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score;
     }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Update()
     {
         tempo -= Time.deltaTime;
@@ -76,6 +79,7 @@ public class ScoreScript : MonoBehaviour
     {
         passage.mudaCena2();
         SceneManager.LoadScene("EndScene");
+
 
     }
 }

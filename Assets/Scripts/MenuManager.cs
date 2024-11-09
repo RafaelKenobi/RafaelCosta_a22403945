@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject highScoreText;
+    public TextMeshProUGUI score;
+
 
     private void Start()
     {
-        highScoreText.text = (PlayerPrefs.GetInt("highscore"), 0).ToString();
+        int highscore = (PlayerPrefs.GetInt("highscore",0));
+        score.text = score.text + highscore;
+        //(PlayerPrefs.GetInt("highscore"), 0).ToString();
     }
     public void ExitGame()
     {
